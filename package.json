@@ -1,0 +1,33 @@
+{
+  "name": "sjs",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "mocha --compilers js:babel-core/register tests/"
+  },
+  "babel": {
+    "presets": [
+      "env"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dmitrykurmanov/sjs.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/dmitrykurmanov/sjs/issues"
+  },
+  "homepage": "https://github.com/dmitrykurmanov/sjs#readme",
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-preset-env": "^1.6.0",
+    "chai": "^4.1.1",
+    "mocha": "^3.5.0"
+  }
+}
