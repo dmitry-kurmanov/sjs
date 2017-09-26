@@ -7,10 +7,15 @@
     "test": "tests"
   },
   "scripts": {
-    "test": "mocha --compilers js:babel-core/register tests/"
+    "test": "mocha --compilers js:babel-core/register tests/",
+    "start": "webpack-dev-server --env.buildType dev",
+    "dev": "webpack --env.buildType dev --progress",
+    "prod": "webpack --env.buildType prod --progress"
   },
   "babel": {
-    "presets": ["env"]
+    "presets": [
+      "env"
+    ]
   },
   "repository": {
     "type": "git",
@@ -24,10 +29,17 @@
   "homepage": "https://github.com/dmitrykurmanov/sjs#readme",
   "devDependencies": {
     "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
     "babel-preset-env": "^1.6.0",
     "chai": "^4.1.1",
+    "css-loader": "^0.28.7",
     "deep-freeze": "0.0.1",
-    "mocha": "^3.5.0"
+    "friendly-errors-webpack-plugin": "^1.6.1",
+    "html-webpack-plugin": "^2.30.1",
+    "mocha": "^3.5.0",
+    "style-loader": "^0.18.2",
+    "webpack": "^3.6.0",
+    "webpack-dev-server": "^2.8.2"
   },
   "dependencies": {
     "redux": "^3.7.2"
