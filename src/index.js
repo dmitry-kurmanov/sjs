@@ -1,4 +1,14 @@
-import store from "./store";
+import { createStore } from "redux";
+import appReducer from "./reducers";
+
+const store = createStore(
+  appReducer,
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+);
+
+/* store.getState() */
+/* store.dispatch({type: "INCREMENT"}) */
+/* store.subscribe( () => {htmlElement.innerHTML = store.getState()} ) */
 
 export const init = () => {
   var valueEl = document.getElementById("value");
