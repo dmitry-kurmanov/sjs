@@ -13,9 +13,7 @@
     "prod": "webpack --env.buildType prod --progress"
   },
   "babel": {
-    "presets": [
-      "env"
-    ]
+    "presets": ["env"]
   },
   "repository": {
     "type": "git",
