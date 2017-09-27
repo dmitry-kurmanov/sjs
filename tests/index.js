@@ -1,4 +1,5 @@
 import { assert } from "chai";
+import deepFreeze from "deep-freeze";
 import { counterReducer } from "../src/counter";
 
 describe("Counter reducer", function() {
@@ -6,15 +7,15 @@ describe("Counter reducer", function() {
     it("should return state incrementing by one", function() {
       const reducer = counterReducer;
       const action = { type: "INCREMENT" };
-      let prevState = 0;
+      let stateBefore = 0;
       let state = 1;
 
-      assert.equal(reducer(prevState, action), state);
+      assert.equal(reducer(stateBefore, action), state);
 
-      prevState = 1;
+      stateBefore = 1;
       state = 2;
 
-      assert.equal(reducer(prevState, action), state);
+      assert.equal(reducer(stateBefore, action), state);
     });
   });
 
@@ -22,15 +23,15 @@ describe("Counter reducer", function() {
     it("should return state decrementing by one", function() {
       const reducer = counterReducer;
       const action = { type: "DECREMENT" };
-      let prevState = 2;
+      let stateBefore = 2;
       let state = 1;
 
-      assert.equal(reducer(prevState, action), state);
+      assert.equal(reducer(stateBefore, action), state);
 
-      prevState = 1;
+      stateBefore = 1;
       state = 0;
 
-      assert.equal(reducer(prevState, action), state);
+      assert.equal(reducer(stateBefore, action), state);
     });
   });
 
@@ -38,10 +39,10 @@ describe("Counter reducer", function() {
     it("should return same state", function() {
       const reducer = counterReducer;
       const action = { type: "Winnie-the-Pooh" };
-      let prevState = 1;
+      let stateBefore = 1;
       let state = 1;
 
-      assert.equal(reducer(prevState, action), state);
+      assert.equal(reducer(stateBefore, action), state);
     });
   });
 
@@ -49,10 +50,10 @@ describe("Counter reducer", function() {
     it("should return default state", function() {
       const reducer = counterReducer;
       const action = {};
-      let prevState = undefined;
+      let stateBefore = undefined;
       let state = 0;
 
-      assert.equal(reducer(prevState, action), state);
+      assert.equal(reducer(stateBefore, action), state);
     });
   });
 });

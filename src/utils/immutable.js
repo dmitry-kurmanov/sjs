@@ -9,3 +9,5 @@ export const arrayRemoveItemByIndex = (array, indexFromOne) => {
 export const arrayAddItem = (array, item) => {
   return [...array, item];
 };
+
+/* array.map method with if (item.id == action.id)*/
