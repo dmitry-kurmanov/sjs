@@ -15,7 +15,7 @@ var outputFolder = "dist";
 
 module.exports = function(options) {
   var config = {
-    entry: path.join(__dirname, "./src/index.js"),
+    entry: path.join(__dirname, "./src/index.jsx"),
     output: {
       path: path.join(__dirname, `./${outputFolder}`),
       filename: `sjs.${options.buildType === "prod" ? "min." : ""}js`,
@@ -24,10 +24,22 @@ module.exports = function(options) {
       umdNamedDefine: true
     },
     resolve: {
-      extensions: [".js"]
+      extensions: ["jsx", ".js"]
     },
     module: {
       rules: [
+        // https://github.com/webpack-contrib/source-map-loader/issues/54
+        // {
+        //   test: /\.jsx?$/,
+        //   exclude: path.resolve(__dirname, 'src'),
+        //   enforce: 'pre',
+        //   use: 'source-map-loader'
+        // },
+        {
+          test: /\.jsx?$/,
+          exclude: /node_modules/,
+          use: 'babel-loader'
+        },
         {
           test: /\.js$/,
           loader: "babel-loader",
@@ -58,6 +70,16 @@ module.exports = function(options) {
   if (options.buildType === "prod") {
     config.plugins = config.plugins.concat([
       new webpack.optimize.UglifyJsPlugin()
+    ]);
+  }
+
+  if (options.buildType === "dev") {
+    config.plugins = config.plugins.concat([
+      new webpack.DefinePlugin({
+        'process.env': {
+          'NODE_ENV': JSON.stringify('development')
+        }
+      })
     ]);
   }
 
