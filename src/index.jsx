@@ -1,7 +1,7 @@
-import { createStore } from "redux";
-import { h, render, Component } from 'preact';
+import { createStore } from "redux"
+import { h, render, Component } from 'preact'
 
-import appReducer from "./reducers";
+import appReducer from "./reducers"
 import Counter from "./components/Counter.jsx"
 
 const store = createStore(
@@ -16,41 +16,14 @@ const store = createStore(
 export const init = () => {
   const doInit = () => render(
     <Counter
-      value={store.getState()}
+      value={store.getState().counterReducer.toString()}
       onIncrement={() => store.dispatch({ type: 'INCREMENT' })}
       onDecrement={() => store.dispatch({ type: 'DECREMENT' })}
     />,
-    document.getElementById('root')
+    document.getElementById('root'),
+    document.getElementById('root').lastChild
   )
 
   doInit()
   store.subscribe(doInit)
-
-  // var valueEl = document.getElementById("value");
-  // function render() {
-  //   valueEl.innerHTML = store.getState().counterReducer.toString();
-  // }
-  // window.store = store;
-  // render();
-  // store.subscribe(render);
-  // document.getElementById("increment").addEventListener("click", function() {
-  //   store.dispatch({ type: "INCREMENT" });
-  // });
-  // document.getElementById("decrement").addEventListener("click", function() {
-  //   store.dispatch({ type: "DECREMENT" });
-  // });
-  // document
-  //   .getElementById("incrementIfOdd")
-  //   .addEventListener("click", function() {
-  //     if (store.getState().counterReducer % 2 !== 0) {
-  //       store.dispatch({ type: "INCREMENT" });
-  //     }
-  //   });
-  // document
-  //   .getElementById("incrementAsync")
-  //   .addEventListener("click", function() {
-  //     setTimeout(function() {
-  //       store.dispatch({ type: "INCREMENT" });
-  //     }, 1000);
-  //   });
 };
