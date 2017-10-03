@@ -42,7 +42,7 @@ module.exports = function(options) {
         },
         {
           test: /\.js$/,
-          loader: "babel-loader",
+          use: "babel-loader",
           exclude: /node_modules/
         },
         {
@@ -52,6 +52,7 @@ module.exports = function(options) {
       ]
     },
     plugins: [
+      new webpack.NoEmitOnErrorsPlugin(),
       new webpack.BannerPlugin(copyright),
       new HTMLPlugin({
         template: "./src/template.html",
@@ -69,6 +70,11 @@ module.exports = function(options) {
 
   if (options.buildType === "prod") {
     config.plugins = config.plugins.concat([
+      new webpack.DefinePlugin({
+        'process.env': {
+          'NODE_ENV': JSON.stringify('production')
+        }
+      }),
       new webpack.optimize.UglifyJsPlugin()
     ]);
   }
