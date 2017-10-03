@@ -26,4 +26,9 @@ export const init = () => {
 
   doInit()
   store.subscribe(doInit)
+  
+  if (module.hot) {
+    require('preact/debug');
+    //module.hot.accept('./components/app', () => requestAnimationFrame(init) ); //HMR
+  }
 };
