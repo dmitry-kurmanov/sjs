@@ -58,7 +58,8 @@ module.exports = function(options) {
         template: "./src/template.html",
         inject: "head"
       }),
-      new FriendlyErrorsWebpackPlugin()
+      new FriendlyErrorsWebpackPlugin(),
+      new webpack.HotModuleReplacementPlugin()
     ],
     devtool: options.buildType === "prod" ? "source-map" : "inline-source-map",
     devServer: {
@@ -71,9 +72,7 @@ module.exports = function(options) {
   if (options.buildType === "prod") {
     config.plugins = config.plugins.concat([
       new webpack.DefinePlugin({
-        'process.env': {
-          'NODE_ENV': JSON.stringify('production')
-        }
+        'process.env.NODE_ENV': JSON.stringify('production')
       }),
       new webpack.optimize.UglifyJsPlugin()
     ]);
@@ -82,9 +81,7 @@ module.exports = function(options) {
   if (options.buildType === "dev") {
     config.plugins = config.plugins.concat([
       new webpack.DefinePlugin({
-        'process.env': {
-          'NODE_ENV': JSON.stringify('development')
-        }
+        'process.env.NODE_ENV': JSON.stringify('development')
       })
     ]);
   }
