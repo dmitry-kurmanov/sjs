@@ -5,8 +5,8 @@ import { Provider } from 'preact-redux';
 import appReducer from "./reducers"
 import App from "./containers/App.jsx"
 
-export class Instance {
-  constructor(rootSelector = "body", options = {}) {
+export class Model {
+  constructor(options = {}) {
     const initialState = {
       counter: options.counter
     }
@@ -17,16 +17,18 @@ export class Instance {
       window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
     );
 
-    render(
-      <Provider store={store}>
-        <App />
-      </Provider>,
-      document.querySelector(rootSelector)
-    )
-    
-    if (module.hot) {
-      require('preact/debug');
-      //module.hot.accept('./components/app', () => requestAnimationFrame(init) ); //HMR
+    this.render = (rootSelector = "body") => {
+      render(
+        <Provider store={store}>
+          <App />
+        </Provider>,
+        document.querySelector(rootSelector)
+      )
+
+      if (module.hot) {
+        require('preact/debug');
+        //module.hot.accept('./components/app', () => requestAnimationFrame(init) ); //HMR
+      }
     }
   }
 }

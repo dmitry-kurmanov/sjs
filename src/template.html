@@ -7,11 +7,11 @@
 </head>
 
 <body>
-
     <div id="root"></div>
 
     <script>
-        var survey = new SJS.Instance("#root", {counter: 7});
+        var survey = new SJS.Model({counter: 7});
+        survey.render("#root");
     </script>
 </body>
 
