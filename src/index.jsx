@@ -5,21 +5,28 @@ import { Provider } from 'preact-redux';
 import appReducer from "./reducers"
 import App from "./containers/App.jsx"
 
-const store = createStore(
-  appReducer,
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-);
+export class Instance {
+  constructor(rootSelector = "body", options = {}) {
+    const initialState = {
+      counter: options.counter
+    }
 
-export const init = () => {
-  render(
-    <Provider store={store}>
-      <App />
-    </Provider>,
-    document.getElementById('root')
-  )
-  
-  if (module.hot) {
-    require('preact/debug');
-    //module.hot.accept('./components/app', () => requestAnimationFrame(init) ); //HMR
+    const store = createStore(
+      appReducer,
+      initialState, 
+      window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+    );
+
+    render(
+      <Provider store={store}>
+        <App />
+      </Provider>,
+      document.querySelector(rootSelector)
+    )
+    
+    if (module.hot) {
+      require('preact/debug');
+      //module.hot.accept('./components/app', () => requestAnimationFrame(init) ); //HMR
+    }
   }
-};
+}
