@@ -58,8 +58,7 @@ module.exports = function(options) {
         template: "./src/template.html",
         inject: "head"
       }),
-      new FriendlyErrorsWebpackPlugin(),
-      new webpack.HotModuleReplacementPlugin()
+      new FriendlyErrorsWebpackPlugin()
     ],
     devtool: options.buildType === "prod" ? "source-map" : "inline-source-map",
     devServer: {
@@ -82,7 +81,8 @@ module.exports = function(options) {
     config.plugins = config.plugins.concat([
       new webpack.DefinePlugin({
         'process.env.NODE_ENV': JSON.stringify('development')
-      })
+      }),
+      new webpack.HotModuleReplacementPlugin()
     ]);
   }
 

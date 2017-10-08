@@ -40,6 +40,7 @@
     "babel-loader": "^7.1.2",
     "babel-plugin-transform-react-jsx": "^6.24.1",
     "babel-preset-env": "^1.6.0",
+    "babel-preset-stage-0": "^6.24.1",
     "chai": "^4.1.1",
     "css-loader": "^0.28.7",
     "deep-freeze": "0.0.1",

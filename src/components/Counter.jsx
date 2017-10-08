@@ -13,16 +13,13 @@ export default class Counter extends Component {
 
 	render() {
         const { value, onIncrement, onDecrement } = this.props
-        const incrementIfOdd = this.incrementIfOdd.bind(this)
-        const incrementAsync = this.incrementAsync.bind(this)
-
 		return <div>
             <p>
                 Clicked: <span>{value}</span> times
                 <button onClick={onIncrement}>+</button>
                 <button onClick={onDecrement}>-</button>
-                <button onClick={incrementIfOdd}>Increment if odd</button>
-                <button onClick={incrementAsync}>Increment async</button>
+                <button onClick={this.incrementIfOdd.bind(this)}>Increment if odd</button>
+                <button onClick={this.incrementAsync.bind(this)}>Increment async</button>
             </p>
         </div>;
 	}
