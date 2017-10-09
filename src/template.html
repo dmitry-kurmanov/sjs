@@ -10,7 +10,11 @@
     <div id="root"></div>
 
     <script>
-        var survey = new SJS.Model({counter: 7});
+        var json = { elements: [
+            { type: "radiogroup", name: "car", title: "What car are you driving?", isRequired: true, 
+            colCount: 4, choices: ["None", "Ford", "Vauxhall", "Volkswagen", "Nissan", "Audi", "Mercedes-Benz", "BMW", "Peugeot", "Toyota", "Citroen"] }
+        ]};
+        var survey = new SJS.Model(json);
         survey.render("#root");
     </script>
 </body>

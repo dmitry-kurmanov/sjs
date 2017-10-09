@@ -7,7 +7,7 @@ import Counter from "../components/Counter.jsx"
 
 function mapStateToProps(state) {
   return {
-    counter: state.counter
+    counterReducer: state.counter
   }
 }
 
@@ -17,13 +17,14 @@ function mapDispatchToProps(dispatch) {
   }
 }
 
-class App extends Component {
+class Survey extends Component {
   render() {
-    const counter = this.props.counter
+    console.dir(this.props.json);
+    const counter = this.props.counterReducer
     const { increment, decrement } = this.props.counterActions
 
     return <Counter value={counter} onIncrement={increment} onDecrement={decrement} />
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(App)
+export default connect(mapStateToProps, mapDispatchToProps)(Survey)
