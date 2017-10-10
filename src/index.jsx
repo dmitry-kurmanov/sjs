@@ -3,12 +3,12 @@ import { h, render } from 'preact'
 import { Provider } from 'preact-redux';
 
 import appReducer from "./reducers"
-import Survey from "./containers/Survey.jsx"
+import SurveyContainer from "./containers/SurveyContainer.jsx"
 
 export class Model {
   constructor(json = null) {
     if (!json) {
-      console.error("invalid entry json: " + json);
+      console.error("SJS error: invalid entry json: " + json);
       return;
     }
 
@@ -25,7 +25,7 @@ export class Model {
     this.render = (rootSelector = "body") => {
       render(
         <Provider store={store}>
-          <Survey json={json}/>
+          <SurveyContainer json={json}/>
         </Provider>,
         document.querySelector(rootSelector)
       )

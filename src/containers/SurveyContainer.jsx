@@ -3,7 +3,7 @@ import { h, Component } from 'preact';
 import { connect } from 'preact-redux';
 
 import * as counterActions from "../actions/counter"
-import Counter from "../components/Counter.jsx"
+import Survey from "../components/Survey.jsx"
 
 function mapStateToProps(state) {
   return {
@@ -17,14 +17,15 @@ function mapDispatchToProps(dispatch) {
   }
 }
 
-class Survey extends Component {
+class SurveyContainer extends Component {
   render() {
-    console.dir(this.props.json);
+    const json = this.props.json;
     const counter = this.props.counterReducer
     const { increment, decrement } = this.props.counterActions
 
-    return <Counter value={counter} onIncrement={increment} onDecrement={decrement} />
+    //return <Survey value={counter} onIncrement={increment} onDecrement={decrement} />    
+    return <Survey json={json} />
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Survey)
+export default connect(mapStateToProps, mapDispatchToProps)(SurveyContainer)
