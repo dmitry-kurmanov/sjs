@@ -13,7 +13,8 @@ export class Model {
     }
 
     const initialState = {
-      counter: 8
+      settings: json,
+      result: {}
     }
 
     const store = createStore(
@@ -25,7 +26,7 @@ export class Model {
     this.render = (rootSelector = "body") => {
       render(
         <Provider store={store}>
-          <SurveyContainer json={json}/>
+          <SurveyContainer />
         </Provider>,
         document.querySelector(rootSelector)
       )

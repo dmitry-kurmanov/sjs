@@ -3,8 +3,8 @@ import Element from './Element.jsx';
 
 export default class Survey extends Component {
 	render() {
-        const { json } = this.props
-        const elementsData = json.elements;
+        const { settings } = this.props
+        const elementsData = settings.elements;
 
         const elements = elementsData.map((elData) => <Element type={elData.type} />)
 

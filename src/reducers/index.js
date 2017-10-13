@@ -2,7 +2,9 @@ import { combineReducers } from "redux";
 import counterReducer from "./counter";
 
 const appReducer = combineReducers({
-  counter: counterReducer
+  counter: counterReducer,
+  settings: (state = {}) => state,
+  result: (state = {}) => state
 });
 
 export default appReducer;

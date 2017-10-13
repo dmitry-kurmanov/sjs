@@ -7,7 +7,8 @@ import Survey from "../components/Survey.jsx"
 
 function mapStateToProps(state) {
   return {
-    counterReducer: state.counter
+    counter: state.counter,
+    settings: state.settings
   }
 }
 
@@ -19,12 +20,12 @@ function mapDispatchToProps(dispatch) {
 
 class SurveyContainer extends Component {
   render() {
-    const json = this.props.json;
-    const counter = this.props.counterReducer
+    const settings = this.props.settings;
+    const counter = this.props.counter;
     const { increment, decrement } = this.props.counterActions
 
     //return <Survey value={counter} onIncrement={increment} onDecrement={decrement} />    
-    return <Survey json={json} />
+    return <Survey settings={settings} />
   }
 }
 
