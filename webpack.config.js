@@ -4,6 +4,7 @@ var webpack = require("webpack");
 var path = require("path");
 var HTMLPlugin = require("html-webpack-plugin");
 var FriendlyErrorsWebpackPlugin = require("friendly-errors-webpack-plugin");
+var BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 var packageJson = require("./package.json");
 var copyright = [
@@ -58,7 +59,8 @@ module.exports = function(options) {
         template: "./src/template.html",
         inject: "head"
       }),
-      new FriendlyErrorsWebpackPlugin()
+      new FriendlyErrorsWebpackPlugin(),
+      new BundleAnalyzerPlugin()
     ],
     devtool: options.buildType === "prod" ? "source-map" : "inline-source-map",
     devServer: {
