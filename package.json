@@ -10,7 +10,8 @@
     "test": "mocha --compilers js:babel-core/register tests/",
     "start": "webpack-dev-server --env.buildType dev",
     "dev": "webpack --env.buildType dev --progress",
-    "prod": "webpack --env.buildType prod --progress"
+    "prod": "webpack --env.buildType prod --progress",
+    "analyze": "webpack --env.buildType prod --env.analyze true --progress"
   },
   "babel": {
     "presets": [

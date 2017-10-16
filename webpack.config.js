@@ -59,8 +59,7 @@ module.exports = function(options) {
         template: "./src/template.html",
         inject: "head"
       }),
-      new FriendlyErrorsWebpackPlugin(),
-      new BundleAnalyzerPlugin()
+      new FriendlyErrorsWebpackPlugin()
     ],
     devtool: options.buildType === "prod" ? "source-map" : "inline-source-map",
     devServer: {
@@ -84,6 +83,12 @@ module.exports = function(options) {
         'process.env.NODE_ENV': JSON.stringify('development')
       }),
       new webpack.HotModuleReplacementPlugin()
+    ]);
+  }
+
+  if (options.analyze === "true") {
+    config.plugins = config.plugins.concat([
+      new BundleAnalyzerPlugin()
     ]);
   }
 
