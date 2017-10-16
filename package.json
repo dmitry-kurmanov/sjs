@@ -14,7 +14,7 @@
   },
   "babel": {
     "presets": [
-      "env"
+      "env", "stage-3"
     ],
     "plugins": [
       [
@@ -40,6 +40,7 @@
     "babel-loader": "^7.1.2",
     "babel-plugin-transform-react-jsx": "^6.24.1",
     "babel-preset-env": "^1.6.0",
+    "babel-preset-stage-3": "^6.24.1",
     "chai": "^4.1.1",
     "css-loader": "^0.28.7",
     "deep-freeze": "0.0.1",
@@ -53,6 +54,7 @@
     "webpack-dev-server": "^2.8.2"
   },
   "dependencies": {
+    "nanoid": "^0.2.2",
     "preact": "^8.2.5",
     "preact-redux": "^2.0.3",
     "redux": "^3.7.2"

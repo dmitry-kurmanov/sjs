@@ -65,8 +65,7 @@ module.exports = function(options) {
     devtool: options.buildType === "prod" ? "source-map" : "inline-source-map",
     devServer: {
       contentBase: path.join(__dirname, outputFolder),
-      open: true,
-      port: 7333
+      open: true
     }
   };
 
