@@ -15,7 +15,8 @@
   },
   "babel": {
     "presets": [
-      "env", "stage-3"
+      "env",
+      "stage-3"
     ],
     "plugins": [
       [
@@ -43,6 +44,7 @@
     "babel-preset-env": "^1.6.0",
     "babel-preset-stage-3": "^6.24.1",
     "chai": "^4.1.1",
+    "clean-webpack-plugin": "^0.1.17",
     "css-loader": "^0.28.7",
     "deep-freeze": "0.0.1",
     "friendly-errors-webpack-plugin": "^1.6.1",
