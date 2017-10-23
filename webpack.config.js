@@ -4,6 +4,8 @@ var webpack = require("webpack");
 var path = require("path");
 var HTMLPlugin = require("html-webpack-plugin");
 var FriendlyErrorsWebpackPlugin = require("friendly-errors-webpack-plugin");
+var BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+var CleanWebpackPlugin = require('clean-webpack-plugin');
 
 var packageJson = require("./package.json");
 var copyright = [
@@ -52,6 +54,7 @@ module.exports = function(options) {
       ]
     },
     plugins: [
+      new CleanWebpackPlugin([outputFolder], {verbose: true}),
       new webpack.NoEmitOnErrorsPlugin(),
       new webpack.BannerPlugin(copyright),
       new HTMLPlugin({
@@ -63,8 +66,7 @@ module.exports = function(options) {
     devtool: options.buildType === "prod" ? "source-map" : "inline-source-map",
     devServer: {
       contentBase: path.join(__dirname, outputFolder),
-      open: true,
-      port: 7333
+      open: true
     }
   };
 
@@ -83,6 +85,12 @@ module.exports = function(options) {
         'process.env.NODE_ENV': JSON.stringify('development')
       }),
       new webpack.HotModuleReplacementPlugin()
+    ]);
+  }
+
+  if (options.analyze === "true") {
+    config.plugins = config.plugins.concat([
+      new BundleAnalyzerPlugin()
     ]);
   }
 
