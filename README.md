@@ -1,6 +1,6 @@
 # sjs
 
-surveyjs implementation experiment (preact + redux)
+[surveyjs](surveyjs.io) implementation experiment (preact + redux)
 
 targets:
 
@@ -8,4 +8,4 @@ targets:
 * save survey state and restore (localStorage)
 * smaller size
 * possibility to track user actions (by redux actions)
-* try rollup
+* to try rollup
