@@ -1,6 +1,6 @@
 # sjs
 
-[surveyjs](surveyjs.io) implementation experiment (preact + redux)
+[surveyjs](https://surveyjs.io/) implementation experiment (preact + redux)
 
 targets:
 
