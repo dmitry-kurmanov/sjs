@@ -1,6 +1,6 @@
-export function userInput(choice) {
+export function changeResult(payload) {
   return {
-    type: "USER_INPUT",
-    payload: choice
+    type: "CHANGE_RESULT",
+    payload: payload
   }
 }

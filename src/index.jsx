@@ -14,7 +14,10 @@ export class Model {
 
     const initialState = {
       settings: json,
-      result: {}
+      result: {},
+      survey: {
+        isComplete: false
+      }
     };
 
     const store = createStore(

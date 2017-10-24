@@ -2,7 +2,7 @@ const initialState = {};
 
 export default (state = initialState, action) => {
   switch (action.type) {
-    case "USER_INPUT":
+    case "CHANGE_RESULT":
       return {
         ...state,
         ...action.payload

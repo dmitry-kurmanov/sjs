@@ -1,11 +1,14 @@
 import { combineReducers } from "redux";
-import counterReducer from "./counter";
+
 import resultReducer from "./result";
+import surveyReducer from "./survey";
+
+const settingsReducer = (state = {}) => state;
 
 const appReducer = combineReducers({
-  counter: counterReducer,
-  settings: (state = {}) => state,
-  result: resultReducer
+  settings: settingsReducer,
+  result: resultReducer,
+  survey: surveyReducer
 });
 
 export default appReducer;

@@ -22,7 +22,7 @@ export default class Radiogroup extends Component {
 	}
 
 	handleChange(e) {
-		this.props.userInput({
+		this.props.changeResult({
 			[e.target.name]: e.target.value
 		});
 	  }

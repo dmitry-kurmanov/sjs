@@ -21,6 +21,6 @@ export default class Element extends Component {
         return;
        }
 
-       return <Component userInput={this.props.userInput}/>
+       return <Component changeResult={this.props.changeResult}/>
     }
 }
