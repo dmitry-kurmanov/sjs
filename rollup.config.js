@@ -15,7 +15,13 @@ const config = {
     replace({
       "process.env.NODE_ENV": JSON.stringify("production")
     }),
-    buble({ jsx: "h" }),
+    buble(
+      { 
+        jsx: "h",
+        objectAssign: 'Object.assign',
+        exclude: ['node_modules/**']
+      }
+    ),
     resolve(), // so Rollup can find `ms`
     commonjs() // so Rollup can convert `ms` to an ES module
   ]
