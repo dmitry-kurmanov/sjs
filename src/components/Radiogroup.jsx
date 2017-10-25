@@ -22,10 +22,10 @@ export default class Radiogroup extends Component {
 	}
 
 	handleChange(e) {
-		this.props.changeResult({
+		this.props.onChange({
 			[e.target.name]: e.target.value
 		});
-	  }
+	}
 
 	render() {
 		const name = this.name;
