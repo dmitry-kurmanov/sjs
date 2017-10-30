@@ -7,17 +7,18 @@
     "test": "tests"
   },
   "scripts": {
-    "test": "mocha",
-    "start": "webpack-dev-server --env.buildType dev",
-    "dev": "webpack --env.buildType dev --progress",
-    "prod": "webpack --env.buildType prod --progress",
+    "test": "jest",
 
-    "prebuild": "rollup -c --environment NODE_ENV:development",
-    "build": "rollup -c --environment NODE_ENV:production",
-    "watch": "rollup -c --environment NODE_ENV:development -w",
-    "pretest": "rollup -c",
-    "prepublish": "npm test",
-    "analyze": "webpack --env.buildType prod --env.analyze true --progress"
+    "start": "webpack-dev-server --env.buildType dev",
+    "prebuild": "webpack --env.buildType dev --progress",
+    "build": "webpack --env.buildType prod --progress",
+    "analyze": "webpack --env.buildType prod --env.analyze true --progress",
+
+    "rlp_prebuild": "rollup -c --environment NODE_ENV:development",
+    "rlp_build": "rollup -c --environment NODE_ENV:production",
+    "rlp_watch": "rollup -c --environment NODE_ENV:development -w",
+    "rlp_pretest": "rollup -c",
+    "rlp_prepublish": "npm test"
   },
   "babel": {
     "presets": [
@@ -49,13 +50,12 @@
     "babel-plugin-transform-react-jsx": "^6.24.1",
     "babel-preset-env": "^1.6.0",
     "babel-preset-stage-3": "^6.24.1",
-    "chai": "^4.1.1",
     "clean-webpack-plugin": "^0.1.17",
     "css-loader": "^0.28.7",
     "deep-freeze": "0.0.1",
     "friendly-errors-webpack-plugin": "^1.6.1",
     "html-webpack-plugin": "^2.30.1",
-    "mocha": "^3.5.0",
+    "jest": "^21.2.1",
     "rollup": "^0.50.0",
     "rollup-plugin-buble": "^0.16.0",
     "rollup-plugin-commonjs": "^8.2.4",
