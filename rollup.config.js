@@ -7,9 +7,11 @@ import uglify from "rollup-plugin-uglify";
 const config = {
   input: "./src/index.jsx",
   output: {
-    file: "./dist/sjs.js",
+    file: `./dist/sjs.${process.env.NODE_ENV === "production" ? "min." : ""}js`,
     format: "umd"
   },
+  banner: '/* my-library version 0.12.23 */',
+  footer: '/* fork me on github: dmitrykurmanov */',
   name: "SJS",
   plugins: [
     replace({
@@ -22,8 +24,8 @@ const config = {
         exclude: ['node_modules/**']
       }
     ),
-    resolve(), // so Rollup can find `ms`
-    commonjs() // so Rollup can convert `ms` to an ES module
+    resolve(),
+    commonjs()
   ]
 };
 

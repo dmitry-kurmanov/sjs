@@ -11,9 +11,10 @@
     "start": "webpack-dev-server --env.buildType dev",
     "dev": "webpack --env.buildType dev --progress",
     "prod": "webpack --env.buildType prod --progress",
-    "prebuild": "",
+
+    "prebuild": "rollup -c --environment NODE_ENV:development",
     "build": "rollup -c --environment NODE_ENV:production",
-    "watch": "rollup -c -w",
+    "watch": "rollup -c --environment NODE_ENV:development -w",
     "pretest": "rollup -c",
     "prepublish": "npm test",
     "analyze": "webpack --env.buildType prod --env.analyze true --progress"
