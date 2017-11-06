@@ -4,8 +4,9 @@ var webpack = require("webpack");
 var path = require("path");
 var HTMLPlugin = require("html-webpack-plugin");
 var FriendlyErrorsWebpackPlugin = require("friendly-errors-webpack-plugin");
-var BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
-var CleanWebpackPlugin = require('clean-webpack-plugin');
+var BundleAnalyzerPlugin = require("webpack-bundle-analyzer")
+  .BundleAnalyzerPlugin;
+var CleanWebpackPlugin = require("clean-webpack-plugin");
 
 var packageJson = require("./package.json");
 var copyright = [
@@ -40,7 +41,7 @@ module.exports = function(options) {
         {
           test: /\.jsx?$/,
           exclude: /node_modules/,
-          use: 'babel-loader'
+          use: "babel-loader"
         },
         {
           test: /\.js$/,
@@ -54,7 +55,7 @@ module.exports = function(options) {
       ]
     },
     plugins: [
-      new CleanWebpackPlugin([outputFolder], {verbose: true}),
+      new CleanWebpackPlugin([outputFolder], { verbose: true }),
       new webpack.NoEmitOnErrorsPlugin(),
       new webpack.BannerPlugin(copyright),
       new HTMLPlugin({
@@ -73,7 +74,7 @@ module.exports = function(options) {
   if (options.buildType === "prod") {
     config.plugins = config.plugins.concat([
       new webpack.DefinePlugin({
-        'process.env.NODE_ENV': JSON.stringify('production')
+        "process.env.NODE_ENV": JSON.stringify("production")
       }),
       new webpack.optimize.UglifyJsPlugin()
     ]);
@@ -82,16 +83,14 @@ module.exports = function(options) {
   if (options.buildType === "dev") {
     config.plugins = config.plugins.concat([
       new webpack.DefinePlugin({
-        'process.env.NODE_ENV': JSON.stringify('development')
+        "process.env.NODE_ENV": JSON.stringify("development")
       }),
       new webpack.HotModuleReplacementPlugin()
     ]);
   }
 
   if (options.analyze === "true") {
-    config.plugins = config.plugins.concat([
-      new BundleAnalyzerPlugin()
-    ]);
+    config.plugins = config.plugins.concat([new BundleAnalyzerPlugin()]);
   }
 
   return config;

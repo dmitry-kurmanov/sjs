@@ -6,13 +6,13 @@ describe("Survey reducer", function() {
     test("should return state with isComplete === true", function() {
       const action = { type: "DO_COMPLETE" };
 
-      let initState = deepFreeze({"isComplete": false});
-      let expectedState = {"isComplete": true};
+      let initState = deepFreeze({ isComplete: false });
+      let expectedState = { isComplete: true };
       let state = reducer(initState, action);
       expect(state).toEqual(expectedState);
 
-      initState = deepFreeze({"isComplete": true});
-      expectedState = {"isComplete": true};
+      initState = deepFreeze({ isComplete: true });
+      expectedState = { isComplete: true };
       state = reducer(initState, action);
       expect(state).toEqual(expectedState);
     });

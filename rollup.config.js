@@ -10,20 +10,18 @@ const config = {
     file: `./dist/sjs.${process.env.NODE_ENV === "production" ? "min." : ""}js`,
     format: "umd"
   },
-  banner: '/* my-library version 0.12.23 */',
-  footer: '/* fork me on github: dmitrykurmanov */',
+  banner: "/* my-library version 0.12.23 */",
+  footer: "/* fork me on github: dmitrykurmanov */",
   name: "SJS",
   plugins: [
     replace({
       "process.env.NODE_ENV": JSON.stringify("production")
     }),
-    buble(
-      { 
-        jsx: "h",
-        objectAssign: 'Object.assign',
-        exclude: ['node_modules/**']
-      }
-    ),
+    buble({
+      jsx: "h",
+      objectAssign: "Object.assign",
+      exclude: ["node_modules/**"]
+    }),
     resolve(),
     commonjs()
   ]
