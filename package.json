@@ -7,14 +7,12 @@
     "test": "tests"
   },
   "scripts": {
-    "test": "jest --watch --coverage --expand --notify",
-
+    "test": "jest --watch",
     "start": "webpack-dev-server --env.buildType dev",
     "prebuild": "webpack --env.buildType dev --progress",
     "build": "webpack --env.buildType prod --progress",
     "postbuild": "jest --coverage --expand --notify",
     "analyze": "webpack --env.buildType prod --env.analyze true --progress",
-
     "rlp_prebuild": "rollup -c --environment NODE_ENV:development",
     "rlp_build": "rollup -c --environment NODE_ENV:production",
     "rlp_watch": "rollup -c --environment NODE_ENV:development -w",
@@ -22,10 +20,7 @@
     "rlp_prepublish": "npm test"
   },
   "babel": {
-    "presets": [
-      "env",
-      "stage-3"
-    ],
+    "presets": ["env", "stage-2"],
     "plugins": [
       [
         "transform-react-jsx",
@@ -50,7 +45,6 @@
     "babel-loader": "^7.1.2",
     "babel-plugin-transform-react-jsx": "^6.24.1",
     "babel-preset-env": "^1.6.0",
-    "babel-preset-stage-3": "^6.24.1",
     "clean-webpack-plugin": "^0.1.17",
     "css-loader": "^0.28.7",
     "deep-freeze": "0.0.1",
@@ -70,6 +64,7 @@
     "webpack-dev-server": "^2.8.2"
   },
   "dependencies": {
+    "babel-preset-stage-2": "^6.24.1",
     "nanoid": "^0.2.2",
     "preact": "^8.2.5",
     "preact-redux": "^2.0.3",

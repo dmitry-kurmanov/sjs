@@ -17,11 +17,9 @@ export default class Radiogroup extends Component {
 				label: 'Male'	
 			}
 		];
-
-		this.handleChange = this.handleChange.bind(this);
 	}
 
-	handleChange(e) {
+	handleChange = (e) => {
 		this.props.onChange({
 			[e.target.name]: e.target.value
 		});

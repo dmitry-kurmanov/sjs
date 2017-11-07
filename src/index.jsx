@@ -20,25 +20,25 @@ export class Model {
       }
     };
 
-    const store = createStore(
+    this.store = createStore(
       appReducer,
       initialState,
       window.__REDUX_DEVTOOLS_EXTENSION__ &&
         window.__REDUX_DEVTOOLS_EXTENSION__()
     );
+  }
 
-    this.render = (rootSelector = "body") => {
-      render(
-        <Provider store={store}>
-          <SurveyContainer />
-        </Provider>,
-        document.querySelector(rootSelector)
-      );
+  render(rootSelector = "body") {
+    render(
+      <Provider store={this.store}>
+        <SurveyContainer />
+      </Provider>,
+      document.querySelector(rootSelector)
+    );
 
-      if (process.env.NODE_ENV === "development") {
-        require("preact/debug");
-        //module.hot.accept('./components/app', () => requestAnimationFrame(init) ); //HMR
-      }
-    };
+    if (process.env.NODE_ENV === "development") {
+      require("preact/debug");
+      //module.hot.accept('./components/app', () => requestAnimationFrame(init) ); //HMR
+    }
   }
 }
