@@ -8,6 +8,7 @@
 
 <body>
   <div id="root"></div>
+  <div id="surveyResult"></div>
 
   <script>
     var json = {
@@ -26,6 +27,11 @@
     };
 
     var survey = window["survey"] = new SJS.Model(json);
+
+    survey.onComplete.add(function (result) {
+      document.querySelector('#surveyResult').innerHTML = "result: " + JSON.stringify(result);
+    });
+
     survey.render("#root");
   </script>
 </body>
