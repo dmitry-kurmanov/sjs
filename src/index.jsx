@@ -5,6 +5,7 @@ import { Provider } from "preact-redux";
 
 import appReducer from "./reducers";
 import SurveyContainer from "./containers/SurveyContainer.jsx";
+import { APIMiddleware, applyAPI } from "./api/index";
 
 export class Model {
   constructor(json = null) {
@@ -25,18 +26,16 @@ export class Model {
       appReducer,
       initialState,
       compose(
-        applyMiddleware(thunk),
+        applyMiddleware(thunk, APIMiddleware),
         window.__REDUX_DEVTOOLS_EXTENSION__ &&
         window.__REDUX_DEVTOOLS_EXTENSION__()
           ? window.__REDUX_DEVTOOLS_EXTENSION__()
           : f => f
       )
     );
-  }
 
-  onComplete = {
-    add: handler => {}
-  };
+    applyAPI(this);
+  }
 
   render(rootSelector = "body") {
     render(

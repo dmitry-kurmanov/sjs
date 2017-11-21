@@ -2,8 +2,9 @@ export function doComplete() {
   return (dispatch, getState) => {
     dispatch({
       type: "DO_COMPLETE",
-      payload: {}
+      payload: {
+        api: "onComplete"
+      }
     });
-    console.log("I am the side-effect !");
   };
 }
