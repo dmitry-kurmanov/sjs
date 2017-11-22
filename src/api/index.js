@@ -5,8 +5,8 @@ const events = {
 };
 
 export const APIMiddleware = store => next => action => {
-  const payload = action.payload;
-  payload.api && events[payload.api].fire(store.getState().result);
+  const event = action.event;
+  event && events[event].fire(store.getState().result);
   return next(action);
 };
 
