@@ -31,7 +31,13 @@ class ElementsContainer extends Component {
         return null;
       }
 
-      return <Question key={element.name} onChange={this.changeResult} />;
+      return (
+        <Question
+          key={element.name}
+          settings={element}
+          onChange={this.changeResult}
+        />
+      );
     });
 
     return elements;

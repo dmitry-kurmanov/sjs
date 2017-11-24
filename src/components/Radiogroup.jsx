@@ -2,44 +2,25 @@ import { h, render, Component } from "preact";
 import nanoid from "nanoid";
 
 export default class Radiogroup extends Component {
-  constructor(props) {
-    super(props);
-
-    this.name = "radiogroup1";
-
-    this.choices = [
-      {
-        value: "female",
-        label: "Female"
-      },
-      {
-        value: "male",
-        label: "Male"
-      }
-    ];
-
-    this.handleChange = this.handleChange.bind(this);
-  }
-
-  handleChange(e) {
+  handleChange = e => {
     this.props.onChange({
       [e.target.name]: e.target.value
     });
-  }
+  };
 
   render() {
-    const name = this.name;
-    let choicesTemplate = this.choices.map((choice, index) => {
-      const id = `${name}_${choice.value}`;
+    const name = this.props.settings.name;
+    let choicesTemplate = this.props.settings.choices.map((choice, index) => {
+      const id = `${name}_${choice}`;
 
       return (
         <div key={nanoid()}>
-          <label for={id}>{choice.label}</label>
+          <label for={id}>{choice}</label>
           <input
             type="radio"
             name={name}
             id={id}
-            value={choice.value}
+            value={choice}
             onChange={this.handleChange}
           />
         </div>
