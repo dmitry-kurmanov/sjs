@@ -8,7 +8,7 @@ export default class Radiogroup extends Component {
     });
   };
 
-  render() {
+  generateChoicesTemplate() {
     const name = this.props.settings.name;
     let choicesTemplate = this.props.settings.choices.map((choice, index) => {
       const id = `${name}_${choice}`;
@@ -27,6 +27,18 @@ export default class Radiogroup extends Component {
       );
     });
 
-    return <div>{choicesTemplate}</div>;
+    return choicesTemplate;
+  }
+
+  render() {
+    const title = this.props.settings.title;
+    const choicesTemplate = this.generateChoicesTemplate();
+
+    return (
+      <div>
+        <h3>{title}</h3>
+        {choicesTemplate}
+      </div>
+    );
   }
 }
