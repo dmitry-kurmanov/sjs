@@ -46,13 +46,13 @@ class ElementsContainer extends Component {
   render() {
     const elementsTemplate = this.generateElements();
 
-    return <div>{elementsTemplate}</div>;
+    return <div class="sjs-elements-container">{elementsTemplate}</div>;
   }
 }
 
 function mapStateToProps(state) {
   return {
-    settings: state.settings
+    settings: state.settings.present
   };
 }
 

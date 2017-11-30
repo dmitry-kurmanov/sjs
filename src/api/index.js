@@ -6,7 +6,7 @@ const events = {
 
 export const APIMiddleware = store => next => action => {
   const event = action.event;
-  event && events[event].fire(store.getState().result);
+  event && events[event].fire(store.getState().result.present);
   return next(action);
 };
 

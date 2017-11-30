@@ -2,6 +2,7 @@ import { createStore, applyMiddleware, compose } from "redux";
 import thunk from "redux-thunk";
 import { h, render } from "preact";
 import { Provider } from "preact-redux";
+import { ActionCreators } from "redux-undo";
 
 import appReducer from "./reducers";
 import SurveyContainer from "./containers/SurveyContainer.jsx";
@@ -37,10 +38,18 @@ export class Model {
     applyAPI(this);
   }
 
+  undo = () => {
+    this.store.dispatch(ActionCreators.undo());
+  };
+
+  redo = () => {
+    this.store.dispatch(ActionCreators.redo());
+  };
+
   render(rootSelector = "body") {
     render(
       <Provider store={this.store}>
-        <SurveyContainer />
+        <SurveyContainer undo={this.undo} redo={this.redo} />
       </Provider>,
       document.querySelector(rootSelector)
     );

@@ -12,12 +12,13 @@ export default class Comment extends Component {
   };
 
   render() {
-    const title = this.props.settings.title;
-
     return (
       <div>
-        <h3>{title}</h3>
-        <textarea name={this.props.name} onChange={this.handleChange} />
+        <h3>{this.props.settings.title}</h3>
+        <textarea
+          name={this.props.settings.name}
+          onChange={this.handleChange}
+        />
       </div>
     );
   }
