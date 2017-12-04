@@ -23,7 +23,7 @@ export class Model {
       }
     };
 
-    this.store = createStore(
+    this._store = createStore(
       appReducer,
       initialState,
       compose(
@@ -39,16 +39,16 @@ export class Model {
   }
 
   undo = () => {
-    this.store.dispatch(ActionCreators.undo());
+    this._store.dispatch(ActionCreators.undo());
   };
 
   redo = () => {
-    this.store.dispatch(ActionCreators.redo());
+    this._store.dispatch(ActionCreators.redo());
   };
 
   render(rootSelector = "body") {
     render(
-      <Provider store={this.store}>
+      <Provider store={this._store}>
         <SurveyContainer undo={this.undo} redo={this.redo} />
       </Provider>,
       document.querySelector(rootSelector)
